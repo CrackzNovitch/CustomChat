@@ -19,9 +19,9 @@ Features
 Commands :
   - [ ] Mute mute player from chat
   - [ ] UnMute mute player from chat
-  - [ ] Mute all player from chat
-  - [ ] Unmute all player from chat
-  - [ ] defPrefix default all from player
+  - [X] Mute all player from chat
+  - [X] Unmute all player from chat
+  - [X] defPrefix default all from player
   - [ ] setPrefix from player
   - [ ] Nick from player
   - [ ] Chat Format Custom
