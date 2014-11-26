@@ -3,7 +3,7 @@ CustomChat \ control your server chat.
 ============
 
 Features 
-Commands
+Commands :
   - [ ] Mute mute player from chat
   - [ ] UnMute mute player from chat
   - [ ] Mute all player from chat
