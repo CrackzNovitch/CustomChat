@@ -75,5 +75,22 @@ class CustomChatCommand {
 			$this->log ( "disable chat for all players" );
 			return;
 		}
+		// enable chat for all players
+		if ((strtolower ( $command->getName () ) == "enablechat")) {
+			$this->pgin->getConfig ()->set ( "disablechat", false );
+			$this->pgin->getConfig ()->save ();
+			$sender->sendMessage ( "enable chat for all players" );
+			$this->log ( "enable chat for all players" );
+			return;
+		}
+		
+		// sets default prefix for new players
+		if ((strtolower ( $command->getName () ) == "defprefix") && isset ( $args [0] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
 
 }
