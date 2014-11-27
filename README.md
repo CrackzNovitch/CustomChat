@@ -26,5 +26,6 @@ Commands :
   - [X] Nick from player
   - [X] Chat Format Custom
     - [X] Tag {WORLD_NAME}
-    - [ ] Counter death
-    - [ ] Counter murder
+    - [ ] Counter death   40%
+    - [ ] Counter murder   0%
+    - [ ] Tag {[0/10*7]} Level & Xp
