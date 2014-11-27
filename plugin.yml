@@ -1,6 +1,6 @@
 name: CustomChat
-version: 1.7.0
-api: 1.6.0
+version: 1.0.0
+api: 1.7.1
 main: Praxthisnovcht\CustomChat\CustomChat
 author: [Praxthisnovcht,Dax,Supra]
 description: Adds options on the discution salon
