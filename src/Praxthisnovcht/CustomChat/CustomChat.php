@@ -124,7 +124,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	public function formatterPlayerDisplayName(Player $p) {
 		$prefix=null;
 		$playerPrefix = $this->getConfig ()->get ( $p->getName ().".prefix" );
-		if ($playerrPrefix != null) {
+		if ($playerPrefix != null) {
 			$prefix = $playerPrefix;
 		} else {
 			//use default prefix
