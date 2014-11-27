@@ -28,6 +28,15 @@ class CustomChatListener implements Listener {
 			$event->setCancelled ( true );
 			return;
 		}
-		
+		if (! $allowChat || $allowChat == null) {
+			$player = $event->getPlayer ();
+			
+			$perm = "chatmute";
+			// $this->log ( "permission ".$player->isPermissionSet ( $perm ));
+			
+			if ($player->isPermissionSet ( $perm )) {
+				$event->setCancelled ( true );
+				return;
+			}
 }
 }
