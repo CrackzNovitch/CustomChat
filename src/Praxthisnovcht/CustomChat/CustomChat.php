@@ -115,7 +115,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		}
 	
 		if (! $this->getConfig ()->get ( "default-player-prefix" )) {
-			$this->getConfig ()->set ( "default-player-prefix", "NP" );
+			$this->getConfig ()->set ( "default-player-prefix", "Default" ); // config.yml
 		}
 	
 		$this->getConfig()->save();
