@@ -17,14 +17,14 @@ The counters will come to a more stable update
 \ control your server chat.
 Features 
 Commands :
-  - [ ] Mute mute player from chat
-  - [ ] UnMute mute player from chat
+  - [X] Mute mute player from chat
+  - [X] UnMute mute player from chat
   - [X] Mute all player from chat
   - [X] Unmute all player from chat
   - [X] defPrefix default all from player
-  - [ ] setPrefix from player
-  - [ ] Nick from player
-  - [ ] Chat Format Custom
-    - [ ] Tag {WORLD_NAME}
+  - [X] setPrefix from player
+  - [X] Nick from player
+  - [X] Chat Format Custom
+    - [X] Tag {WORLD_NAME}
     - [ ] Counter death
     - [ ] Counter murder
