@@ -121,7 +121,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		$this->getConfig()->save();
 	}
 	
-	public function formatterDisplayName(Player $p) {
+	public function formatterPlayerDisplayName(Player $p) {
 		$prefix=null;
 		$playerPrefix = $this->getConfig ()->get ( $p->getName ().".prefix" );
 		if ($playerrPrefix != null) {
@@ -138,7 +138,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 			return;
 		}
 		if ($nick!=null && $prefix==null) {
-			$p->setNameTag($nck );
+			$p->setNameTag($nick );
 			return;
 		}
 		if ($nick==null && $prefix!=null) {
