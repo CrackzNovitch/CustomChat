@@ -92,14 +92,6 @@ class CustomChatCommand {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
 				exit ();
 			}
-		// sets default prefix for new players
-		if ((strtolower ( $command->getName () ) == "defprefix") && isset ( $args [0] )) {
-			$playerName = $args [0];
-			$p = $sender->getServer ()->getPlayerExact ( $playerName );
-			if ($p == null) {
-				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
-			}
 			$prefix = $args [1];
 			$this->pgin->getConfig ()->set ( "default-player-prefix", $prefix );
 			$this->pgin->getConfig ()->save ();
