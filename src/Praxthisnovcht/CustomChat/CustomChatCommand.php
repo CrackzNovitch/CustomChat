@@ -92,5 +92,141 @@ class CustomChatCommand {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
 				exit ();
 			}
-
+		// sets default prefix for new players
+		if ((strtolower ( $command->getName () ) == "defprefix") && isset ( $args [0] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$prefix = $args [1];
+			$this->pgin->getConfig ()->set ( "default-player-prefix", $prefix );
+			$this->pgin->getConfig ()->save ();
+			$sender->sendMessage ( " all players default prefix set to " . $args [1] );
+			return;
+		}
+		
+		// sets prefix for player
+		if ((strtolower ( $command->getName () ) == "setprefix") && isset ( $args [0] ) && isset ( $args [1] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$prefix = $args [1];
+			$this->pgin->getConfig ()->set ( $p->getName ().".prefix", $prefix );
+			$this->pgin->getConfig ()->save ();
+			
+			// $p->setDisplayName($prefix.":".$name);
+			$this->pgin->formatterPlayerDisplayName ( $p );
+			$sender->sendMessage ( $p->getName () . " prefix set to " . $args [1] );
+			return;
+		}
+		
+		// set player's prefix to default.
+		if ((strtolower ( $command->getName () ) == "delprefix") && isset ( $args [0] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$this->pgin->getConfig ()->remove ( $p->getName () . ".prefix" );
+			$this->pgin->getConfig ()->save ();
+			$sender->sendMessage ( $p->getName () . " prefix set to default" );
+			return;
+		}
+		
+		// sets nick for player
+		if ((strtolower ( $command->getName () ) == "setnick") && isset ( $args [0] ) && isset ( $args [1] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$nick = $args [1];
+			$this->pgin->getConfig ()->set ( $p->getName () . ".nick", $nick );
+			$this->pgin->getConfig ()->save ();
+			
+			$this->pgin->formatterPlayerDisplayName ( $p );
+			$sender->sendMessage ( $p->getName () . " nick name set to " . $args [1] );
+			return;
+		}
+		// sets nick for player
+		if ((strtolower ( $command->getName () ) == "delnick") && isset ( $args [0] ) && isset ( $args [1] )) {
+			$playerName = $args [0];
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$nick = $args [1];
+			$this->pgin->getConfig ()->remove ( $p->getName () . ".nick" );
+			$this->pgin->getConfig ()->save ();
+			
+			$this->pgin->formatterPlayerDisplayName ( $p );
+			$sender->sendMessage ( $p->getName () . " nick removed " );
+			return;
+		}
+		
+		// mute player from chat
+		if ((strtolower ( $command->getName () ) == "mute") && isset ( $args [0] )) {
+			$playerName = $args [0];
+			// check if the player exist
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$perm = "chatmute";
+			$p->addAttachment ( $this->pgin, $perm, true );
+			$sender->sendMessage ( $p->getName () . " chat muted" );
+			// $this->log ( "isPermissionSet " . $p->isPermissionSet ( $perm ) );
+			return;
+		}
+		// - unmute player from chat
+		if ((strtolower ( $command->getName () ) == "unmute") && isset ( $args [0] )) {
+			$playerName = $args [0];
+			// check if the player exist
+			$p = $sender->getServer ()->getPlayerExact ( $playerName );
+			if ($p == null) {
+				$sender->sendMessage ( "player " . $playerName . " is not online!" );
+				exit ();
+			}
+			$perm = "chatmute";
+			foreach ( $p->getEffectivePermissions () as $pm ) {
+				if ($pm->getPermission () == $perm) {
+					// $this->log ( "remove attachements " . $pm->getValue () );
+					$p->removeAttachment ( $pm->getAttachment () );
+					$sender->sendMessage ( $p->getName () . " chat unmuted" );
+					return;
+				}
+			}
+			$sender->sendMessage ( $p->getName () . " already unmuted" );
+			// $this->log ( "isPermissionSet " . $p->isPermissionSet ( $perm ) );
+			return;
+		}
+	}
+	
+	
+	private function hasCommandAccess(CommandSender $sender) {
+		if ($sender->getName () == "CONSOLE") {
+			return true;
+		} elseif ($sender->isOp ()) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Logging util function
+	 *
+	 * @param unknown $msg        	
+	 */
+	private function log($msg) {
+		$this->pgin->getLogger ()->info ( $msg );
+	}
 }
