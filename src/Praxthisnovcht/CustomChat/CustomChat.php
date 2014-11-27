@@ -82,5 +82,82 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		$this->log ( TextFormat::RED . "CustomChat is Disable" );
 		$this->enabled = false;
 	}
-	
+		
+	/**
+	 * OnCommand
+	 * (non-PHPdoc)
+	 * 
+	 * @see \pocketmine\plugin\PluginBase::onCommand()
+	 */
+	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
+		$this->swCommand->onCommand ( $sender, $command, $label, $args );
 	}
+	
+	public function loadConfig() {
+		$this->saveDefaultConfig();
+		$this->fixConfigData ();
+	}
+// 	public function reloadConfig() {
+// 		$this->reloadConfig ();
+// 		$this->loadConfig ();
+// 	}
+	public function fixConfigData() {
+		if (! $this->getConfig ()->get ( "chat-format" )) {
+			$this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]<{DISPLAY_NAME}> {MESSAGE}" );
+		}
+	
+		if (! $this->getConfig ()->get ( "enable-formatter" )) {
+			$this->getConfig ()->set ( "enable-formatter", true );
+		}
+	
+		if (! $this->getConfig ()->get ( "disablechat" )) {
+			$this->getConfig ()->set ( "disablechat", false );
+		}
+	
+		if (! $this->getConfig ()->get ( "default-player-prefix" )) {
+			$this->getConfig ()->set ( "default-player-prefix", "NP" );
+		}
+	
+		$this->getConfig()->save();
+	}
+	
+	public function formatterDisplayName(Player $p) {
+		$prefix=null;
+		$playerPrefix = $this->getConfig ()->get ( $p->getName ().".prefix" );
+		if ($playerrPrefix != null) {
+			$prefix = $playerPrefix;
+		} else {
+			//use default prefix
+			$prefix = $this->getConfig ()->get ( "default-player-prefix");
+		}
+	
+		//check if player has nick name
+		$nick = $this->getConfig ()->get ( $p->getName().".nick");
+		if ($nick!=null && $prefix!=null) {
+			$p->setNameTag( $prefix . ":" . $nick );
+			return;
+		}
+		if ($nick!=null && $prefix==null) {
+			$p->setNameTag($nck );
+			return;
+		}
+		if ($nick==null && $prefix!=null) {
+			$p->setNameTag($prefix . ":".$p->getName());
+			return;
+		}
+	
+		//default to regular name
+		$p->setNameTag($p->getName());
+		return;
+	}
+	
+	/**
+	 * Logging util function
+	 *
+	 * @param unknown $msg        	
+	 */
+	private function log($msg) {
+		$this->getLogger ()->info ( $msg );
+	}
+	
+	   }
