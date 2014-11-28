@@ -106,11 +106,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		if (! $this->getConfig ()->get ( "chat-format" )) {
 			$this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]<{DISPLAY_NAME}> {MESSAGE}" );
 		}
-	// TODO
-	// public function fixConfigData() {
-	//	if (! $this->getConfig ()->get ( "chat-format" )) {
-	//		$this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]({kills})<{DISPLAY_NAME}> {MESSAGE}" );
-		}
+	
 		if (! $this->getConfig ()->get ( "enable-formatter" )) {
 			$this->getConfig ()->set ( "enable-formatter", true );
 		}
@@ -125,6 +121,11 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	
 		$this->getConfig()->save();
 	}
+// TODO
+// public function fixConfigData() {
+//	if (! $this->getConfig ()->get ( "chat-format" )) {
+// $this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]({kills})<{DISPLAY_NAME}> {MESSAGE}" ); // Im Learning
+
 	
 	public function formatterPlayerDisplayName(Player $p) {
 		$prefix=null;
