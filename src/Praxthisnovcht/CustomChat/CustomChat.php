@@ -41,7 +41,8 @@ use pocketmine\network\protocol\LoginPacket;
 use pocketmine\level\generator\Generator;
 
 /**
- * CustomChat
+ * Main Custom....
+ *        
  */
 class CustomChat extends PluginBase implements CommandExecutor {
 
@@ -67,8 +68,8 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	 */
 	public function onEnable() {
 		$this->enabled = true;
-		$this->getServer()->getPluginManager()->registerEvents(new CustomChatListener($this), $this);
-		$this->log ( TextFormat::GREEN . "CustomChat is Enable" );
+		$this->getServer()->getPluginManager()->registerEvents(new ccListener($this), $this);
+		$this->log ( TextFormat::GREEN . "- CustomChat - Enabled!" );
 		$this->loadConfig ();
 	}
 	
@@ -79,10 +80,10 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	 * @see \pocketmine\plugin\PluginBase::onDisable()
 	 */
 	public function onDisable() {
-		$this->log ( TextFormat::RED . "CustomChat is Disable" );
+		$this->log ( TextFormat::RED . "CustomChat - Disabled" );
 		$this->enabled = false;
 	}
-		
+	
 	/**
 	 * OnCommand
 	 * (non-PHPdoc)
@@ -115,7 +116,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		}
 	
 		if (! $this->getConfig ()->get ( "default-player-prefix" )) {
-			$this->getConfig ()->set ( "default-player-prefix", "Default" ); // config.yml
+			$this->getConfig ()->set ( "default-player-prefix", "Default" );
 		}
 	
 		$this->getConfig()->save();
@@ -159,5 +160,4 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	private function log($msg) {
 		$this->getLogger ()->info ( $msg );
 	}
-	
-	   }
+}
