@@ -14,7 +14,8 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 
 /**
- * CustomChatListener
+ * PraxListener
+ *
  */
 class CustomChatListener implements Listener {
 	public $pgin;
@@ -28,6 +29,7 @@ class CustomChatListener implements Listener {
 			$event->setCancelled ( true );
 			return;
 		}
+		
 		if (! $allowChat || $allowChat == null) {
 			$player = $event->getPlayer ();
 			
