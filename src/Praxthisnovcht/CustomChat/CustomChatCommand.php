@@ -41,7 +41,6 @@ use pocketmine\event\block\SignChangeEvent;
 use pocketmine\level\generator\Flat;
 use pocketmine\level\generator\Normal;
 use pocketmine\level\generator\Generator;
-use mcg76\util\SimpleWorlds\SkyGridGenerator;
 
 /**
  * Command
@@ -71,7 +70,7 @@ class CustomChatCommand {
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args) {
 		// disable chat for all players
 		if ((strtolower ( $command->getName () ) == "disablechat")) {
-			$this->pgin->getConfig ()->set ( "disablechat", true );
+			$this->pgin->getConfig ()->set ( "disablechat", true ); // config.yml
 			$this->pgin->getConfig ()->save ();
 			$sender->sendMessage ( "disable chat for all players" );
 			$this->log ( "disable chat for all players" );
@@ -79,7 +78,7 @@ class CustomChatCommand {
 		}
 		// enable chat for all players
 		if ((strtolower ( $command->getName () ) == "enablechat")) {
-			$this->pgin->getConfig ()->set ( "disablechat", false );
+			$this->pgin->getConfig ()->set ( "disablechat", false ); // config.yml
 			$this->pgin->getConfig ()->save ();
 			$sender->sendMessage ( "enable chat for all players" );
 			$this->log ( "enable chat for all players" );
