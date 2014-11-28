@@ -7,32 +7,29 @@ description: Adds options on the discution salon
 commands:
  setprefix:
   description: "sets prefix for player"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.setprefix
  defprefix:
   description: "sets default prefix for new players"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.defprefix
  delprefix:
   description: "set player's prefix to default"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.delprefix
  setnick:
   description: "sets player's nick"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.setnick
  delnick:
   description: "returns players's real name"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.delnick
  mute:
   description: "mute player from chat"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.mute
  unmute:
   description: "unmute player from chat"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.unmute
  disablechat:
   description: "disable chat for all players"
-  permission: customchat.plugin.prax
+  permission: customchat.plugin.offchat
  enablechat:
   description: "enable chat for all player"
-  permission: customchat.plugin.prax
-permissions:
- customchat.plugin.prax:
-  description: "any authorization"
-  default: op
+  permission: customchat.plugin.onchat
+
