@@ -159,6 +159,7 @@ class CustomChatCommand {
 			$nick = $args [1];
 			$this->pgin->getConfig ()->remove ( $p->getName () . ".nick" );
 			$this->pgin->getConfig ()->save ();
+			// save yml
 			
 			$this->pgin->formatterPlayerDisplayName ( $p );
 			$sender->sendMessage ( $p->getName () . " nick removed " );
@@ -200,10 +201,11 @@ class CustomChatCommand {
 			}
 			$sender->sendMessage ( $p->getName () . " already unmuted" );
 			// $this->log ( "isPermissionSet " . $p->isPermissionSet ( $perm ) );
-			return;
+			return; // next try again
+			
 		}
 	}
-	
+	             // TODO NEXT VERSION
 	
 	private function hasCommandAccess(CommandSender $sender) {
 		if ($sender->getName () == "CONSOLE") {
