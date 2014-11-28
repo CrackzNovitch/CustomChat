@@ -68,7 +68,7 @@ class CustomChat extends PluginBase implements CommandExecutor {
 	 */
 	public function onEnable() {
 		$this->enabled = true;
-		$this->getServer()->getPluginManager()->registerEvents(new ccListener($this), $this);
+		$this->getServer()->getPluginManager()->registerEvents(new CustomChatListener($this), $this);
 		$this->log ( TextFormat::GREEN . "- CustomChat - Enabled!" );
 		$this->loadConfig ();
 	}
@@ -106,7 +106,11 @@ class CustomChat extends PluginBase implements CommandExecutor {
 		if (! $this->getConfig ()->get ( "chat-format" )) {
 			$this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]<{DISPLAY_NAME}> {MESSAGE}" );
 		}
-	
+	// TODO
+	// public function fixConfigData() {
+	//	if (! $this->getConfig ()->get ( "chat-format" )) {
+	//		$this->getConfig ()->set ( "chat-format", "{WORLD_NAME}:[{PREFIX}]({kills})<{DISPLAY_NAME}> {MESSAGE}" );
+		}
 		if (! $this->getConfig ()->get ( "enable-formatter" )) {
 			$this->getConfig ()->set ( "enable-formatter", true );
 		}
