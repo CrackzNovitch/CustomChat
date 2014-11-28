@@ -41,9 +41,11 @@ use pocketmine\event\block\SignChangeEvent;
 use pocketmine\level\generator\Flat;
 use pocketmine\level\generator\Normal;
 use pocketmine\level\generator\Generator;
+use mcg76\util\SimpleWorlds\SkyGridGenerator;
 
 /**
- * CustomChatCommand
+ * Command
+ *
  */
 class CustomChatCommand {
 	private $pgin;
