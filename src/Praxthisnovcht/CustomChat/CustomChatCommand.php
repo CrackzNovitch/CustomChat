@@ -106,7 +106,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$prefix = $args [1];
 			$this->pgin->getConfig ()->set ( $p->getName ().".prefix", $prefix );
@@ -124,7 +124,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$this->pgin->getConfig ()->remove ( $p->getName () . ".prefix" );
 			$this->pgin->getConfig ()->save ();
@@ -138,7 +138,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$nick = $args [1];
 			$this->pgin->getConfig ()->set ( $p->getName () . ".nick", $nick );
@@ -154,7 +154,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$nick = $args [1];
 			$this->pgin->getConfig ()->remove ( $p->getName () . ".nick" );
@@ -173,7 +173,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$perm = "chatmute";
 			$p->addAttachment ( $this->pgin, $perm, true );
@@ -188,7 +188,7 @@ class CustomChatCommand {
 			$p = $sender->getServer ()->getPlayerExact ( $playerName );
 			if ($p == null) {
 				$sender->sendMessage ( "player " . $playerName . " is not online!" );
-				exit ();
+				exit (); // What 
 			}
 			$perm = "chatmute";
 			foreach ( $p->getEffectivePermissions () as $pm ) {
